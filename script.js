@@ -57,7 +57,7 @@ function toggleStatus(e) {
 
 function createTimestamp() {
     const span = document.createElement("span");
-    span.innerHTML = new Date().toLocaleTimeString();
+    span.innerHTML = " " +new Date().toLocaleTimeString();
     statusOutput.appendChild(span);
 }
 
