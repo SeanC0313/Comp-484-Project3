@@ -29,6 +29,14 @@ toggleButton.setAttribute("data-action", "toggle-status");
 // Define and call the highlightListItems() function here so it runs on load.
 // You will need to use document.querySelectorAll('li') and a loop structure
 // (like a 'for' loop or 'forEach') to iterate over all list items [3-5].
+function highlightListItems() {
+    const listItems = document.querySelectorAll("li");
+    for (let i = 0; i < listItems.length; i++) {
+        listItems[i].style.color = "blue";
+    }
+}
+
+highlightListItems();
 
 /* ======================================= */
 // --- Tasks 5, 6, 7 & 8: Toggle Functionality ---
@@ -60,3 +68,17 @@ toggleButton.addEventListener("click", toggleStatus);
 // Define the startFlashing() and stopFlashing() functions using
 // setInterval() and clearInterval() [8, 9], and bind them to the
 // timerButton using addEventListener for 'click' and 'dblclick' [10].
+function startFlashing() {
+    if (intervalId !== null) return;
+    intervalId = setInterval(function () {
+        controlPanel.classList.toggle("hidden");
+    }, 500);
+}
+
+function stopFlashing() {
+    clearInterval(intervalId);
+    intervalId = null;
+}
+
+timerButton.addEventListener("click", startFlashing);
+timerButton.addEventListener("dblclick", stopFlashing);
